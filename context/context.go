@@ -2234,10 +2234,12 @@ func (ctx *context) UnmarshalBody(outPtr interface{}, unmarshaler Unmarshaler) e
 		return errors.New("unmarshal: empty body")
 	}
 
-	rawData, err := ioutil.ReadAll(ctx.request.Body)
-	if err != nil {
-		return err
-	}
+	//....robin
+	rawData := []byte("")
+	//rawData, err := ioutil.ReadAll(ctx.request.Body)
+	//if err != nil {
+	//	return err
+	//}
 
 	if ctx.Application().ConfigurationReadOnly().GetDisableBodyConsumptionOnUnmarshal() {
 		// * remember, Request.Body has no Bytes(), we have to consume them first
